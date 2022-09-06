@@ -1,0 +1,12 @@
+.form-signup-container{
+    width:500px;
+    margin: 0 auto;
+    height: 700px;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    box-shadow: 5px 8px 8px 10px  lightgray;
+}
