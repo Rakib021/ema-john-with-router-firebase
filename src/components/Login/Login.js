@@ -1,3 +1,4 @@
+import { GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ import './Login.css';
 
 
 const Login = () => {
+    const [create,setCreate] = useState({});
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     // const [error,setError] = useState('');
@@ -23,6 +25,22 @@ const Login = () => {
       if(user){
           navigate(from,{replace:true});
       }
+
+
+      const googleProvider = new GoogleAuthProvider(auth);
+
+      const handleGoogleSignIn=()=>{
+          signInWithPopup(auth,googleProvider)
+          .then(result =>{
+            const create = result.create;
+            setCreate(create);
+            console.log(result.create);
+          })
+          .catch(error=>{
+            console.log(error);
+          })
+          
+          }
 
     const handleEmailBlur =event=>{
         setEmail(event.target.value);
@@ -67,7 +85,7 @@ const Login = () => {
                <hr/><span className="extra">or</span>
            </div>
           <div className="google-submit-div">
-             <button className="google-submit">Continue with Google</button>
+             <button onClick={handleGoogleSignIn} className="google-submit">Continue with Google</button>
           </div>
            
            </div>

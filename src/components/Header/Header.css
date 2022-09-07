@@ -17,3 +17,9 @@
 .header a:hover{
     color: orange;
 }
+.btn{
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 20px;
+}
